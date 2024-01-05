@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: Colors.teal,
           leading: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.ac_unit,),
+            icon: const Icon(Icons.ac_unit,),
           ),
           actions:  [
             InkWell(
@@ -37,12 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
              decoration: (
              BoxDecoration(
                borderRadius: BorderRadius.circular(10),
-               color: Colors.yellowAccent
+               color: Colors.orangeAccent
              )
              ),
              child: Image.asset("assets/images/women.jpg"),
            ),
-            
+
           ],
         ),
         body:SingleChildScrollView(
@@ -75,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left:20),
+
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -128,10 +129,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Text(
-                          "View all  >",
+                          "View all > ",
                           style: TextStyle(
                             fontSize: 15,
-                            color: Colors.green,
+                              color: Colors.teal,
                           ),
                         )
                       ]
@@ -145,12 +146,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       children: List.generate(
                         fruitsList.length,
-                            (index) => InkWell(
-                          onTap: () {
-                            Map m1 = fruitsList[index];
-                            Navigator.pushNamed(context, 'product',
-                                arguments: m1).then((value)=>print("$value"));
-                          },
+                            (index) =>  InkWell(
+                              onTap: () {
+                                cartList.add(fruitsList[index]);
+                              },
                           child: Container(
                             height: 200,
                             width: 160,
@@ -192,15 +191,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 5,
+                                  height: 10,
                                 ),
                                 Visibility(
                                   visible: isFruits,
                                   child: Text(
-                                    "${fruitsList[index]['place']}",
+                                    "${fruitsList[index]['country']}",
                                     style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
                                         color: Colors.black),
                                   ),
                                 ),
@@ -215,15 +213,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: Text(
                                         "\$${fruitsList[index]['price']}",
                                         style: const TextStyle(
-                                            fontSize: 15,
+                                            fontSize: 18,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.black),
                                       ),
                                     ),
                                     Visibility(
                                       visible: isFruits,
-                                      child: const Icon(
-                                          Icons.add_box,size: 20,color: Colors.green),
+                                      child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        decoration: (
+                                        BoxDecoration(
+                                          borderRadius:BorderRadius.circular(10),
+                                          color: Colors.teal
+                                        )
+                                        ),
+                                        child: const Icon(Icons.add),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -244,11 +251,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: List.generate(
                         fruitsList.length,
                             (index) => InkWell(
-                          onTap: () {
-                            Map m1 = vegtableList[index];
-                            Navigator.pushNamed(context, 'product',
-                                arguments: m1).then((value)=>print("$value"));
-                          },
+                              onTap: () {
+                                cartList.add(vegtableList[index]);
+                              },
                           child: Container(
                             height: 200,
                             width: 160,
@@ -296,15 +301,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Visibility(
                                   visible: isVegetables,
                                   child: Text(
-                                    "${vegtableList[index]['place']}",
+                                    "${vegtableList[index]['country']}",
                                     style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
                                         color: Colors.black),
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 5,
+                                  height: 10,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -321,8 +325,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     Visibility(
                                       visible: isVegetables,
-                                      child: const Icon(
-                                          Icons.add_box,size: 20,color: Colors.green),
+                                      child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        decoration: (
+                                            BoxDecoration(
+                                                borderRadius:BorderRadius.circular(10),
+                                                color: Colors.teal
+                                            )
+                                        ),
+                                        child: const Icon(Icons.add),
+                                      ),
                                     ),
 
                                   ],

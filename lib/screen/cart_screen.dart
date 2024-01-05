@@ -29,9 +29,28 @@ class _CartScreenState extends State<CartScreen> {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.green,
-            title: const Text(" My Cart",
+            title: const Text(" My Cart",style: TextStyle(color: Colors.white60),
             ),
-            centerTitle: true,
+            leading: InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, 'home');
+              },
+                child: Icon(Icons.arrow_back_ios_new,color: Colors.white60,),
+            ),
+            actions: [
+              Container(
+                width: 50,
+                height: 30,
+                decoration: (
+                    BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      color: Colors.yellow,
+                    )
+                ),
+                child: Image.asset("assets/images/women.jpg"),
+              ),
+            ],
+
           ),
           body: Stack(
             children: [
@@ -40,20 +59,20 @@ class _CartScreenState extends State<CartScreen> {
                   children: List.generate(cartList.length, (index) => Container(
                     height: 100,
                     width: double.infinity,
-                    padding: const EdgeInsets.all(10),
-                    margin:  const EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10),
+                    margin:  EdgeInsets.all(10),
                     decoration:  BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: const [
                           BoxShadow(
                               color: Colors.black26,
-                              spreadRadius: 2,
-                              blurRadius: 5
+                              spreadRadius: 1,
+                              blurRadius: 1,
                           )
                         ]),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
                             "${cartList[index]['image']}",
@@ -83,12 +102,12 @@ class _CartScreenState extends State<CartScreen> {
                               "\$${cartList[index]['price']}",
                               style: const TextStyle(
                                   fontSize: 20,
-                                  color: Colors.black
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
-                        const Spacer(),
+                        Spacer(),
                         InkWell(
                             onTap:()
                             {
@@ -98,7 +117,7 @@ class _CartScreenState extends State<CartScreen> {
                                 count();
                               });
                             },
-                            child: const Icon(Icons.delete)
+                            child: Icon(Icons.delete)
                         ),
                       ],
 
@@ -107,15 +126,15 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
               ),
-              const Spacer(),
+              Spacer(),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
 
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   height: 60,
                   width: MediaQuery.sizeOf(context).width,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                       color: Colors.green,
                       boxShadow: [
                         BoxShadow(color: Colors.black12,blurRadius: 2,spreadRadius: 5)
@@ -125,24 +144,24 @@ class _CartScreenState extends State<CartScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text("\$$total",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           )
                       ),
-                      const SizedBox(
+                      SizedBox(
                           width: 10
                       ),
                       Container(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         height: 40,
                         width: 120,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Text("Checkout",
+                        child: Text("Checkout",
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.green,
