@@ -21,7 +21,7 @@ samples, guidance on mobile development, and a full API reference.
 
 <video>
 
-https://github.com/rutvik4940/organic-food_app/assets/153794371/19e700fc-87ab-4abf-b69c-a67855797057
+"https://github.com/rutvik4940/organic-food_app/assets/153794371/19e700fc-87ab-4abf-b69c-a67855797057"
 </video>
 </p>
 
